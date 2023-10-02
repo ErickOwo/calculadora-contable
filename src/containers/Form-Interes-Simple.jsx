@@ -92,13 +92,15 @@ function FormInteresSimple ({animation, displayForm, closeModal, action, setResu
                   action == "calcularTasa" 
                   ? <InputsTasa/> : <InputsTiempo/>
                 }
-                <input 
-                  className='bg-green-500 text-white cursor-pointer' value={"Calcular"} type='submit'/>
-                <button 
-                  className='bg-black text-white'
-                  onClick={e=>{
-                    e.preventDefault()
-                    closeModal()}} >Cerrar</button>
+                <div className='flex flex-col gap-2 mt-2'>
+                  <input 
+                    className='bg-green-500 text-white cursor-pointer py-2' value={"Calcular"} type='submit'/>
+                  <button 
+                    className='bg-black text-white py-2'
+                    onClick={e=>{
+                      e.preventDefault()
+                      closeModal()}} >Cerrar</button>
+                </div>
               </div>
             </motion.form>
           </motion.div>) : null
