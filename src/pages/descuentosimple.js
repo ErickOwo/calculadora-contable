@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import FormDesc from '@containers/Form-Descuento-Simple'
 import ModalRespuesta from '@containers/Modal-Respuesta-Descuento'
+import Link from 'next/link'
 
 const DescuentoSimple = () => {
   const [animation, setAnimation] = useState(false)
@@ -55,6 +56,9 @@ const DescuentoSimple = () => {
             openModal()
             setAction('calcularTiempoDescuento')
          }}>Calcular Tiempo</button>
+         <Link href='/'>
+          <button className='bg-red-600 text-white py-2 px-1 mt-3 w-full'>Regresar al Menu Principal</button> 
+         </Link>
         </div>
       </div>
       <FormDesc 

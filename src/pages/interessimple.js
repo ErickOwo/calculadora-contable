@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import FormInt from '@containers/Form-Interes-Simple'
 import ModalRespuestaInteres from '@containers/Modal-Respuesta-Interes'
+import Link from 'next/link'
 
 const InteresSimple = () => {
   const [animation, setAnimation] = useState(false)
@@ -55,6 +56,9 @@ const InteresSimple = () => {
             openModal()
             setAction('calcularTiempo')
          }}>Calcular Tiempo</button>
+         <Link href='/'>
+          <button className='bg-red-600 text-white py-2 px-1 mt-3 w-full'>Regresar al Menu Principal</button> 
+         </Link>
         </div>
       </div>
       <FormInt 

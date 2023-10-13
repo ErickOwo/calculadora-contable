@@ -53,11 +53,11 @@ const ModalRespuestaInteres = ({displayRespuesta, animationModal2, result , clos
                 action == 'descuentoSimple' ? 'El descuento es de:' : 
                 action == 'calcularValorVencimiento' ? 'El Valor de Vencimiento es de:' : 
                 action == 'calcularTasaDescuento' ? 'La Tasa de Descuento es de:' : 
-                action == 'calcularTiempoDescuento' ? 'El Tiempo transcurrido o transcurrir es de:' : ''
+                action == 'calcularTiempoDescuento' ? 'El Tiempo transcurrido o a transcurrir es de:' : ''
               }</h3>
               <p className='text-2xl text-center mt-2 mb-4'>{
-                action == 'calcularTasa' ? `% ${result}` 
-                : action == 'calcularTiempo' ? `${result} años` 
+                action == 'calcularTasaDescuento' ? `% ${result}` 
+                : action == 'calcularTiempoDescuento' ? `${result} años` 
                 :`Q. ${result}` 
               }</p>
               <button className='bg-red-600 text-white py-2 px-1' onClick={closeModal2}>Cerrar</button>
