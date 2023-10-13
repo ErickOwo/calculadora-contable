@@ -1,8 +1,8 @@
 import {useState} from 'react'
-import FormInt from '@containers/Form-Interes-Simple'
-import ModalRespuestaInteres from '@containers/Modal-Respuesta-Interes'
+import FormDesc from '@containers/Form-Descuento-Simple'
+import ModalRespuesta from '@containers/Modal-Respuesta-Descuento'
 
-const InteresSimple = () => {
+const DescuentoSimple = () => {
   const [animation, setAnimation] = useState(false)
   const [displayForm, setDisplay] = useState(false)
   const [animationModal2, setAnimationModal2] = useState(false)
@@ -35,36 +35,36 @@ const InteresSimple = () => {
   return (
     <div className='flex flex-col p-2 md:pt-16 items-center '>
       <div className='bg-black/10 p-2 w-full md:w-[300px]'>
-        <h3 className='mb-4 font-semibold text-2xl'>Interes Simple</h3>
+        <h3 className='mb-4 font-semibold text-2xl'>Descuento Bancario</h3>
         <div className='flex flex-col gap-2'>
          <button className='bg-blue-600 text-white py-2 px-1' onClick={()=>{
             openModal()
-            setAction('interesSimple')
-         }}>Calcular Interes Simple</button>
+            setAction('descuentoSimple')
+         }}>Calcular Descuento Bancario</button>
          <button className='bg-yellow-600 text-white py-2 px-1'
          onClick={()=>{
             openModal()
-            setAction('calcularCapital')
-         }}>Calcular Capital</button>
+            setAction('calcularValorVencimiento')
+         }}>Calcular Valor de Vencimiento</button>
          <button className='bg-sky-600 text-white py-2 px-1'
          onClick={()=>{
             openModal()
-            setAction('calcularTasa')
-         }}>Calcular Tasa de Interes</button>
+            setAction('calcularTasaDescuento')
+         }}>Calcular Tasa de Descuento</button>
          <button className='bg-green-600 text-white py-2 px-1'onClick={()=>{
             openModal()
-            setAction('calcularTiempo')
+            setAction('calcularTiempoDescuento')
          }}>Calcular Tiempo</button>
         </div>
       </div>
-      <FormInt 
+      <FormDesc 
         animation={animation}
         displayForm={displayForm}
         closeModal={closeModal}
         action={action}
         setResult={setResult}
         openModal2={openModal2} />
-      <ModalRespuestaInteres 
+      <ModalRespuesta 
         animationModal2={animationModal2}
         displayRespuesta={displayRespuesta}
         result={result}
@@ -75,4 +75,4 @@ const InteresSimple = () => {
   )
 }
 
-export default InteresSimple
+export default DescuentoSimple

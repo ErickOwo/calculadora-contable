@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const ModalRespuesta = ({displayRespuesta, animationModal2, result , closeModal2, action}) => {
+const ModalRespuestaInteres = ({displayRespuesta, animationModal2, result , closeModal2, action}) => {
   const variableOverlay = {
     hidden: { 
       opacity: 0, 
@@ -50,10 +50,10 @@ const ModalRespuesta = ({displayRespuesta, animationModal2, result , closeModal2
               initial='hidden'
                 >
               <h3 className='text-xl'>{
-                action == 'interesSimple' ? 'El Interes ganado o adeudado es de:' : 
+                action == 'interesSimple' ? 'El interes es de:' : 
                 action == 'calcularCapital' ? 'El Capital es de:' : 
                 action == 'calcularTasa' ? 'La Tasa de Interes Anual es de:' : 
-                action == 'calcularTiempo' ? 'El Tiempo transcurrido es de:' : ''
+                action == 'calcularTiempo' ? 'El Tiempo transcurrido o a transcurrir es de:' : ''
               }</h3>
               <p className='text-2xl text-center mt-2 mb-4'>{
                 action == 'calcularTasa' ? `% ${result}` 
@@ -68,4 +68,4 @@ const ModalRespuesta = ({displayRespuesta, animationModal2, result , closeModal2
   )
 }
 
-export default ModalRespuesta
+export default ModalRespuestaInteres

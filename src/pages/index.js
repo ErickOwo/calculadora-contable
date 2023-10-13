@@ -11,6 +11,11 @@ export default function Home() {
              Calcular el Interes Simple
           </div>
         </Link>
+        <Link href="/descuentosimple">
+          <div>
+             Calcular el Descuento Simple
+          </div>
+        </Link>
       </div>
     </div>
   )

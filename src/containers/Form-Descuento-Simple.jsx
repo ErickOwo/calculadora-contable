@@ -1,12 +1,13 @@
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
-import InputsInteresSimple from '@components/Inputs-Interes-Simple'
-import InputsCapital from '@components/Inputs-Capital'
-import InputsTasa from '@components/Inputs-Tasa'
-import InputsTiempo from '@components/Inputs-Tiempo'
-import { calcularInteresSimple, calcularCapital, calcularTasaInteres, calcularTiempo } from '@utils/calculadora-interes-simple'
+import InputsDescuentoSimple from '@components/Inputs-Descuento-Simple'
+import InputsTiempoDescuento from '@components/Inputs-Tiempo-Descuento'
+import InputsValorVencimiento from '@components/Inputs-Valor-Vencimiento'
+import InputsTasaDescuento from '@components/Inputs-Tasa-Descuento'
 
-function FormInteresSimple ({animation, displayForm, closeModal, action, setResult, openModal2}){
+import { calcularDescuento, calcularTasaDescuento, calcularValorVencimiento, calcularTiempoDescuento } from '@utils/calculadora-descuento-simple'
+
+function FormDescuentoSimple ({animation, displayForm, closeModal, action, setResult, openModal2}){
   const formRef = useRef()
   const variableOverlay = {
     hidden: { 
@@ -42,23 +43,23 @@ function FormInteresSimple ({animation, displayForm, closeModal, action, setResu
 
     const formData = new FormData(formRef.current)
     const data = {
-      capital: formData.get('capital'),
+      desc: formData.get('desc'),
+      monto: formData.get('monto'),
       tasa: formData.get('tasa'),
       tiempo: formData.get('tiempo'),
-      interes: formData.get('interes'),
     }
 
-    if(action == 'interesSimple'){
-      const interes = calcularInteresSimple(data.capital, data.tasa, data.tiempo)
-      setResult(interes)
-    } else if (action == 'calcularCapital'){
-      const capital = calcularCapital(data.interes, data.tasa, data.tiempo)
-      setResult(capital)
-    } else if (action == 'calcularTasa'){ 
-      const tasa = calcularTasaInteres(data.interes, data.capital, data.tiempo)
+    if(action == 'descuentoSimple'){
+      const resDescuentoSimple = calcularDescuento(data.monto, data.tiempo, data.tasa) 
+      setResult(resDescuentoSimple)
+    } else if (action == 'calcularValorVencimiento'){
+      const resValorVencimiento = calcularValorVencimiento(data.desc, data.tasa, data.tiempo)
+      setResult(resValorVencimiento)
+    } else if (action == 'calcularTasaDescuento'){ 
+      const tasa = calcularTasaDescuento(data.desc, data.monto, data.tiempo)
       setResult(tasa)
     } else {
-      const tiempo = calcularTiempo(data.interes, data.capital, data.tasa)
+      const tiempo = calcularTiempoDescuento(data.desc, data.monto, data.tasa)
       setResult(tiempo)
     }
     openModal2()
@@ -82,20 +83,23 @@ function FormInteresSimple ({animation, displayForm, closeModal, action, setResu
               animate={animation ? 'visible' : 'hidden'}
               initial='hidden'
                 >
-              <h1 className='mb-2'>{
-                action == 'interesSimple' ? 'Calcularemos el Interes Simple' :
-                action == 'calcularCapital' ? 'Calcularemos el Capital' :
-                action == 'calcularTasa' ? 'Calcularemos la Tasa de Interes' :
-               'Calcularemos el Tiempo'
-              }</h1>
+              <h1 className='mb-2'>
+                {
+                  action == "descuentoSimple" ? "Calcularemos el Descuento Simple" :
+                  action == "calcularValorVencimiento" ? "Calcularemos el Valor de Vencimiento" :
+                  action == "calcularTasaDescuento" ? "Calcularemos la Tasa de Descuento" :
+                  "Calcularemos el Tiempo Descuento"
+                }
+              </h1>
               <div className='flex flex-col gap-2'>
                 {
-                  action == "interesSimple" 
-                    ? <InputsInteresSimple /> :
-                  action == "calcularCapital" 
-                  ? <InputsCapital/> :
-                  action == "calcularTasa" 
-                  ? <InputsTasa/> : <InputsTiempo/>
+                  action == "descuentoSimple" 
+                    ? <InputsDescuentoSimple /> :
+                  action == "calcularValorVencimiento"
+                    ? <InputsValorVencimiento /> :
+                  action == "calcularTasaDescuento" 
+                  ? <InputsTasaDescuento/> :
+                  <InputsTiempoDescuento/>
                 }
                 <div className='flex flex-col gap-2 mt-2'>
                   <input 
@@ -114,4 +118,4 @@ function FormInteresSimple ({animation, displayForm, closeModal, action, setResu
   )
 }
 
-export default FormInteresSimple
+export default FormDescuentoSimple
