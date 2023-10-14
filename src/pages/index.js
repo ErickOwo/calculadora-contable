@@ -16,6 +16,11 @@ export default function Home() {
              Calcular el Descuento Simple
           </div>
         </Link>
+        <Link href="/anualidadesvencidas">
+          <div className="hover:bg-black/10 mb-2 py-1 w-full">
+             Calcular el Anualidades Vencidas
+          </div>
+        </Link>
       </div>
     </div>
   )
