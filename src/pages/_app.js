@@ -1,5 +1,7 @@
 import 'styles/tailwind.css'
 import Head from 'next/head'
+import Header from '@containers/Header'
+
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -9,10 +11,12 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content="Ejercicios y formulas contables aplicadas" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <Component {...pageProps} />
-      </main>
-
+      <div className='flex flex-col'>
+        <Header />
+        <main className='w-full'>
+          <Component {...pageProps} />
+        </main>
+      </div>
     </div>
   )
 }
